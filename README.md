@@ -17,3 +17,8 @@ Then, start the exporter like this:
 ./heka_exporter -heka.url="http://127.0.0.1:4352/data/heka_report.json"
 ```
 Prometheus-compatible metrics will be available at http://127.0.0.1:9111/metrics
+
+Or, to listen on an alternate port:
+```
+./heka_exporter -heka.url="http://127.0.0.1:4352/data/heka_report.json" -web.listen-address ":9999"
+```
