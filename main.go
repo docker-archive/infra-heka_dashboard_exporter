@@ -29,8 +29,6 @@ var (
   })
 )
 
-// type expVars map[string]interface{}
-
 type collector struct {
   target  *url.URL
   client  *http.Client
