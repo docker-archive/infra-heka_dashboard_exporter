@@ -21,7 +21,7 @@ var (
   listeningAddress = flag.String("web.listen-address", ":9111", "Address on which to expose metrics and web interface.")
   metricsPath      = flag.String("web.telemetry-path", "/metrics", "Path under which to expose Prometheus metrics.")
   target           = flag.String("heka.url", "", "URL of expvar endpoint to expose.")
-  namespace        = flag.String("heka.namespace", "heka", "Namespace/prefix for expvar metrics.")
+  namespace        = flag.String("heka.namespace", "heka", "Namespace/prefix for heka metrics.")
   errorCounter     = prometheus.NewCounter(prometheus.CounterOpts{
     Namespace: *namespace,
     Name:      "errors_total",
