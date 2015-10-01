@@ -27,5 +27,5 @@ To listen on an alternate port, use the web.listen-address flag:
 
 If you prefer, you can run the pre-built docker container with the same options as above:
 ```
-docker run -d -p 9111:9111 dckr/heka-exporter -heka.url="http://127.0.0.1:4352/data/heka_report.json"
+docker run -d -p 9111:9111 dckr/heka-exporter -heka.url="http://somehekainstance:4352/data/heka_report.json"
 ```
