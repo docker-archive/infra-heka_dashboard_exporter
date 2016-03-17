@@ -1,4 +1,4 @@
-FROM       alpine:3.1
+FROM       alpine:3.2
 MAINTAINER Aaron 'Sweet River' Vinson <avinson@docker.com>
 EXPOSE     9111
 ENTRYPOINT [ "/bin/heka_exporter" ]

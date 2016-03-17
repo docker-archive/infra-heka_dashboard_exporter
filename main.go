@@ -7,6 +7,7 @@ import (
   "log"
   "net/http"
   "net/url"
+  "strings"
   "unicode"
 
   "github.com/prometheus/client_golang/prometheus"
@@ -85,7 +86,7 @@ func getSystemMetrics(data map[string]interface{}) []interface{} {
           default:
             myMetric.Name = myName
             myMetric.Subsystem = system
-            myMetric.MetricName = toUnderscore(key)
+            myMetric.MetricName = normalizeName(key)
             myMetric.Help = key + " for " + myMetric.MetricName + " in " + system
 
             valueMap := val.(map[string]interface{})
@@ -120,10 +121,10 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
   collectHekaStats(stats, ch)
 }
 
-func toUnderscore(camelCase string) string {
+func normalizeName(metric string) string {
   ret := []rune{}
   add := false
-  for _, r := range camelCase {
+  for _, r := range metric {
     c := r
     if unicode.IsUpper(c) {
       if add {
@@ -136,7 +137,8 @@ func toUnderscore(camelCase string) string {
     }
     ret = append(ret, c)
   }
-  return string(ret)
+  metric = strings.Replace(string(ret), "-", "_", -1)
+  return metric
 }
 
 func collectHekaStats(stats map[string]interface{}, ch chan<- prometheus.Metric) {
