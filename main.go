@@ -70,7 +70,7 @@ func hekaToPrometheusTypes(rep string) prometheus.ValueType {
 
 func getSystemMetrics(data map[string]interface{}) []interface{} {
   var myMetrics = []interface{}{}
-  systems := []string{"decoders", "encoders", "globals", "outputs"}
+  systems := []string{"decoders", "encoders", "globals", "filters", "outputs"}
   for _, system := range systems {
     mapList := data[system]
     if mapList != nil {
